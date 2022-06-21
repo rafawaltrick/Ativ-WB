@@ -1,8 +1,10 @@
 <p align="center">
 <h1 align="center"> FATEC Profº Jessen Vidal, SJC - 2º Semestre DSM </h1>
 
-<h2> 📑 Atividade 3 - Técnica de Programação I </h2>
-
+<h2> 📑 Atividade 5 - Técnica de Programação I </h2>
+<p>
+Após  o  desenvolvimento  do  pré-projeto  para  GUI  do  sistema,  você  obteve  experiência  em  desenvolvimento front-end e melhorou, consideravelmente, seu conhecimento sobre HTML, CSS e bibliotecas para construção de  interfaces  gráficas  na web.Mas,  ainda  lhe  falta  experiência  sobre  como funciona  acomunicação  entre front-end e back-end.
+</p>
 
 <div id='equipe'>
 <h2> 🎓 Equipe de Desenvolvimento </h2>
@@ -18,17 +20,4 @@
   Para executar a aplicação, certifique-se de ter instalado o NodeJs em seu computador:
 - Faça o clone do repositório:
 
-```
-git clone https://github.com/Nicolas734/atvi-wb-typescript.git
-```
-- Na pasta raiz do projeto, digite:
-```
-npx tsc ou tsc
-```
-- Agora instale as dependências do projeto:
-``` 
-npm install
-``` 
-- Execute a aplicação pelo seguinte comando:
-```
-npm start
+
