@@ -3,7 +3,7 @@
 
 <h2> 📑 Atividade 5 - Técnica de Programação I </h2>
 <p>
-Após  o  desenvolvimento  do  pré-projeto  para  GUI  do  sistema,  você  obteve  experiência  em  desenvolvimento front-end e melhorou, consideravelmente, seu conhecimento sobre HTML, CSS e bibliotecas para construção de  interfaces  gráficas  na web.Mas,  ainda  lhe  falta  experiência  sobre  como funciona  acomunicação  entre front-end e back-end.
+A partir das informações supra-apresentadas você decidiu pegar mais um desafio.Oobjetivo é construir uma aplicação  front-end  que  consiga  se  comunicar  com  a  aplicação  back-end.  As  operações  de listar,  cadastrar, atualizar e  excluir  clientesdevem  estar  disponíveis  para  que  um  usuário  comum  consiga  realizar,  mas utilizando a GUI criada por você.
 </p>
 
 <div id='equipe'>
