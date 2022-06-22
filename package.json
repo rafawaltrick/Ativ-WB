@@ -1,11 +1,11 @@
 {
-  "name": "ATIV-WB",
+  "name": "ativ-wb",
   "version": "1.0.0",
-  "description": "",
+  "description": "<p align=\"center\">\r <h1 align=\"center\"> FATEC Profº Jessen Vidal, SJC - 2º Semestre DSM </h1>",
   "main": "index.js",
-  "type": "module",
   "scripts": {
-    "start": "nodemon index"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd Backend && nodemon index"
   },
   "repository": {
     "type": "git",
@@ -17,15 +17,8 @@
   "bugs": {
     "url": "https://github.com/rodrigoribeiro027/Ativ-WB/issues"
   },
+  "homepage": "https://github.com/rodrigoribeiro027/Ativ-WB#readme",
   "dependencies": {
-    "cors": "^2.8.5",
-    "dotenv": "^16.0.1",
-    "express": "^4.18.1",
-    "mysql2": "^2.3.3",
-    "nodemon": "^2.0.16",
-    "sequelize": "^6.21.0"
-  },
-  "devDependencies": {
     "nodemon": "^2.0.16"
   }
 }
