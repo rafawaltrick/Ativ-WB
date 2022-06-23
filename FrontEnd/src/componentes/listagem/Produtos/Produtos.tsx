@@ -1,16 +1,18 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 import { Link } from "react-router-dom";
 
 
-type props = {
+type iprops = {
     tema: string
 }
 
 
-export default class Produtos extends Component<props> {
-
-    render() {
+const Produtos: React.FC<iprops> = (props) => {
+    const produtos = [
+        {id:"1", nome:"Shapoo", preco:"15", descricao:"Para os cabelos", categoria:"Higiene", quantidade:"5"}
+    ]
+    
 
         return (
             <>
@@ -31,43 +33,32 @@ export default class Produtos extends Component<props> {
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>Shampoo</td>
-                                <td>10</td>
-                                <td>cabelo liso</td>
-                                <td>Limpeza capilar</td>
-                                <td>10</td>
-                                <td className="espaço">
-                                    <Link to = "/editProduto">
-                                        <i className="material-icons espaço1">edit</i>
-                                    </Link>
-                                    <Link to = "/">
-                                        <i className="material-icons espaço1 ">delete</i>
-                                    </Link>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Shampoo</td>
-                                <td>10</td>
-                                <td>cabelo liso</td>
-                                <td>Limpeza capilar</td>
-                                <td>10</td>
-                                <td className="espaço">
-                                    <Link to = "/editProduto">
-                                        <i className="material-icons espaço1">edit</i>
-                                    </Link>
-                                    <Link to = "/">
-                                        <i className="material-icons espaço1 ">delete</i>
-                                    </Link>
-                                </td>
-                            </tr>
+                        {produtos.map((p:any, i:any)=> (
+                            <tr key={i}>
+                            <td>{p.id}</td>
+                            <td>{p.nome}</td>
+                            <td>{p.preco}</td>
+                            <td>{p.descricao}</td>
+                            <td>{p.categoria}</td>
+                            <td>{p.quantidade}</td>
+                            <td className="espaço">
+                                <Link to = "/editProduto">
+                                    <i className="material-icons espaço1">edit</i>
+                                </Link>
+                                <Link to = "/">
+                                    <i className="material-icons espaço1 ">delete</i>
+                                </Link>
+                            </td>
+                        </tr>
+                        ))}
+                            
                         </tbody>
                     </table>
                 </div>
             </>
 
         )
-    }
+    
 }
+
+export default Produtos
