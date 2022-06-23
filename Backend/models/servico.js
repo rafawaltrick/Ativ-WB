@@ -1,7 +1,13 @@
 import { Sequelize } from "sequelize";
 import db from "../config/db.js"
 
-const servico = db.define('servico',{
+const Servico = db.define('servico',{
+    id:{
+        type:Sequelize.INTEGER,
+        autoIncrement:true,
+        primaryKey:true
+    },
+
     nomeServiço:{
         type:Sequelize.STRING,
         allowNull:true,
@@ -20,4 +26,4 @@ const servico = db.define('servico',{
     }
 })
 
-export default servico
+export default Servico

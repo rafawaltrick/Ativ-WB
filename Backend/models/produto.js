@@ -1,11 +1,11 @@
 import { Sequelize } from "sequelize";
 import db from "../config/db.js"
 
-const produto = db.define('produto',{
+const Produto = db.define('produto',{
     ProdutoID:{
-        type:Sequelize.STRING,
-        allowNull:true,
-        primaryKey: true
+        type:Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement:true
     },
     nome:{
         type:Sequelize.STRING,
@@ -29,4 +29,4 @@ const produto = db.define('produto',{
     }
 })
 
-export default produto
+export default Produto

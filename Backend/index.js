@@ -6,14 +6,17 @@ import pedido from "./models/pedido.js";
 import produto from "./models/produto.js";
 import servico from "./models/servico.js";
 
+import clienteRouter from "./routes/clienteRouter.js"
+
+
 const app = express();
 
 try {
     db.authenticate().then(()=>{
-        cliente.sync({force:true})
-        pedido.sync({force:true})
-        produto.sync({force:true})
-        servico.sync({force:true})
+        cliente.sync()
+        pedido.sync()
+        produto.sync()
+        servico.sync()
         console.log('Banco de Dados Conectado.');
     });
     
@@ -24,6 +27,9 @@ try {
 app.use(cors());
 
 app.use(express.json())
+
+app.use('/cliente', clienteRouter)
+
 
 
 
