@@ -4,9 +4,9 @@ import cors from "cors";
 import cliente from "./models/cliente.js";
 import pedido from "./models/pedido.js";
 import produto from "./models/produto.js";
-import servico from "./models/servico.js";
-
+import consumo from "./models/consumo.js";
 import clienteRouter from "./routes/clienteRouter.js"
+import produtoRouter from "./routes/produtoRouter.js"
 
 
 const app = express();
@@ -16,7 +16,7 @@ try {
         cliente.sync()
         pedido.sync()
         produto.sync()
-        servico.sync()
+        consumo.sync()
         console.log('Banco de Dados Conectado.');
     });
     
@@ -29,6 +29,8 @@ app.use(cors());
 app.use(express.json())
 
 app.use('/cliente', clienteRouter)
+app.use('/produto', produtoRouter)
+
 
 
 

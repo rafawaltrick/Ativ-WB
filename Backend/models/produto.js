@@ -2,7 +2,7 @@ import { Sequelize } from "sequelize";
 import db from "../config/db.js"
 
 const Produto = db.define('produto',{
-    ProdutoID:{
+    id:{
         type:Sequelize.INTEGER,
         primaryKey: true,
         autoIncrement:true

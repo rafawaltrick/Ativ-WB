@@ -40,7 +40,7 @@ export const removerPedido = async (req, res) => {
 export const cadastrarPedido = async (req, res) => {
     try {
         const pedido = await Pedido.create({
-
+                
         })
         res.status(201).json(pedido)
     } catch (error) {

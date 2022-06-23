@@ -44,7 +44,7 @@ export const cadastrarProduto = async (req, res) => {
             preco: req.body.preco,
             descricao:req.body.descricao,
             categoria: req.body.categoria,
-            quantidade: req.body.nome
+            quantidade: req.body.quantidade
         })
         res.status(201).json(produto)
     } catch (error) {
@@ -58,7 +58,7 @@ export const atualizarProduto = async (req, res) => {
             preco: req.body.preco,
             descricao:req.body.descricao,
             categoria: req.body.categoria,
-            quantidade: req.body.nome
+            quantidade: req.body.quantidade
         },{
             where:{
                 id:req.params.id
