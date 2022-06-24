@@ -1,5 +1,4 @@
-import { cp } from "fs";
-import React, { Component } from "react";
+import React from "react";
 import './cadastro.css'
 import M from "materialize-css"
 
