@@ -72,3 +72,24 @@ export const atualizarCliente = async (req, res) => {
     }
 }
 
+export const listagemGenero = async (req,res)=> {
+    try{
+        const masculino = await Cliente.findAll({
+            where:{
+            genero:'m'
+            }
+        })
+        const feminino = await Cliente.findAll({
+            where:{
+            genero:'f'
+            }
+        })
+        res.status(201).json({masculino,feminino})
+
+    }catch(error){
+        console.log(error)
+        res.status(500).json({ message: error })
+    }
+}
+
+

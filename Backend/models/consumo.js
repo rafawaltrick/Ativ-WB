@@ -20,7 +20,7 @@ const Consumo = db.define('Consumo',{
     serv_id:{
         type:Sequelize.INTEGER,
         allowNull:true
-    },
+    }
 })
 
 Consumo.belongsTo(Cliente,{foreignKey:'cli_id'});

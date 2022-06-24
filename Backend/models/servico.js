@@ -1,32 +1,29 @@
 import { Sequelize } from "sequelize";
 import db from "../config/db.js"
+import Consumo from "./consumo.js";
 
-const Pedido = db.define('pedido',{
+const Servico = db.define('servico',{
     id:{
         type:Sequelize.INTEGER,
-        primaryKey: true,
-        autoIncrement:true
+        autoIncrement:true,
+        primaryKey:true
     },
-    nome:{
+    nomeServico:{
         type:Sequelize.STRING,
         allowNull:true,
     },
-    preco:{
+    precoServico:{
         type:Sequelize.INTEGER,
         allowNull:true, 
     },
-    descricao:{
+    descricaoServico:{
         type:Sequelize.STRING,
-        allowNull:true,
-    },
-    categoria:{
-        type:Sequelize.STRING,
-        allowNull:true,
-    },
-    quantidade:{
-        type:Sequelize.INTEGER,
         allowNull:true,
     }
 })
 
-export default Pedido
+Consumo.belongsTo(Servico,{foreignKey:'cli_id'});
+Servico.hasMany(Consumo,{foreignKey:'cli_id'});
+
+
+export default Servico 
