@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
+import { Link } from "react-router-dom";
 
 
 type iprops = {
@@ -36,6 +37,11 @@ const ConsumoCli: React.FC<iprops> = (props) => {
                             <td>{cS.nome}</td>
                             <td>{cS.preco}</td>
                             <td>{cS.descricao}</td>
+                            <td> 
+                                <Link to = "/">
+                                    <i className="material-icons espaço1 ">delete</i>
+                                </Link>
+                            </td>
                         </tr>
                         ))}
                             

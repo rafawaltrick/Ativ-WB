@@ -9,7 +9,7 @@ type iprops = {
 
 const Consumos: React.FC<iprops> = (props)=> {
     const consumoCliente =
-    {cpf:"56787763324", nomeServico:"Depilação", nomeProduto:"Gel Para Depilação"}
+    {cpf:"56787763324", servico_id:"1", produto_id:"2"}
     
         let estiloBotao = `btn waves-effect waves-light `
         React.useEffect(()=> {
@@ -28,12 +28,12 @@ const Consumos: React.FC<iprops> = (props)=> {
                         </div>
                         <div className="row">
                             <div className="input-field col s6">
-                                <input id="Nome Servico" type="text" className="validate" value={consumoCliente.nomeServico} />
-                                <label htmlFor="Nome Servico">Nome Servico</label>
+                                <input id="Nome Servico" type="text" className="validate" value={consumoCliente.servico_id} />
+                                <label htmlFor="Nome Servico">ID Servico</label>
                             </div>
                             <div className="input-field col s6">
-                                <input id="Nome Produto" type="text" className="validate" value={consumoCliente.nomeProduto} />
-                                <label htmlFor="Nome Produto">Nome Produto</label>
+                                <input id="Nome Produto" type="text" className="validate" value={consumoCliente.produto_id} />
+                                <label htmlFor="Nome Produto">ID Produto</label>
                             </div>
                         </div>
                         <div className="row">
