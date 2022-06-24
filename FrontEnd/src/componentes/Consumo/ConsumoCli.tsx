@@ -1,15 +1,21 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 
 
-type props = {
+type iprops = {
     tema: string
 }
 
 
-export default class ConsumoCli extends Component<props> {
+const ConsumoCli: React.FC<iprops> = (props) => {
+    const consumoServico = [
+        {nome:"", preco:"", descricao:""}
+    ]
 
-    render() {
+    const consumoProduto = [
+        {nome:"", preco:"", descricao:""}
+    ]
+    
         return (
             <>
                 <div className="row">
@@ -25,11 +31,14 @@ export default class ConsumoCli extends Component<props> {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>corte de cabelo</td>
-                                <td>10</td>
-                                <td>tesoura e maquina</td>
-                            </tr>
+                        {consumoServico.map((cS:any, i:any)=> (
+                            <tr key={i}>
+                            <td>{cS.nome}</td>
+                            <td>{cS.preco}</td>
+                            <td>{cS.descricao}</td>
+                        </tr>
+                        ))}
+                            
                         </tbody>
                     </table>
                     <h3 className="center">
@@ -44,16 +53,21 @@ export default class ConsumoCli extends Component<props> {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Shampoo</td>
-                                <td>10</td>
-                                <td>deluxe</td>
-                            </tr>
+                        {consumoProduto.map((cP:any, i:any)=> (
+                            <tr key={i}>
+                            <td>{cP.nome}</td>
+                            <td>{cP.preco}</td>
+                            <td>{cP.descricao}</td>
+                        </tr>
+                        ))}
+                            
                         </tbody>
                     </table>
                 </div>
             </>
 
         )
-    }
+    
 }
+
+export default ConsumoCli

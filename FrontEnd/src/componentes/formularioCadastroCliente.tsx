@@ -1,6 +1,7 @@
 import { cp } from "fs";
-import { Component } from "react";
+import React, { Component } from "react";
 import './cadastro.css'
+import M from "materialize-css"
 
 type iprops = {
     tema: string
@@ -8,19 +9,22 @@ type iprops = {
 
 
 const FormularioCadastroCliente: React.FC<iprops> = (props)=> {
-    const cadastroCliente = [
+    const cadastroCliente = 
         {nome:"Robson", nomeSocial:"Rob", rg:"337347659", cpf:"23456613325", telefone:"31245633", email:"rab.son@gmail.com"}
-    ]
+    
 
-    const cadastroProduto = [
+    const cadastroProduto = 
         {nome:"Creme de Depilação", preco:"50", codigo:"12", descricao:"Creme para Depilação Íntima", categoria:"Estética", quantidade:"69"}
-    ]
+    
 
-    const cadastroServico =[
+    const cadastroServico =
         {nome:"Depilação", preco:"65", descricao:"Retirada de Pelos"}
-    ]
+    
     
         let estiloBotao = `btn waves-effect waves-light `
+        React.useEffect(()=> {
+            M.updateTextFields()
+        },[])
         return (
             <>
             <h3 className="center">Cadastros</h3>
@@ -29,47 +33,47 @@ const FormularioCadastroCliente: React.FC<iprops> = (props)=> {
                 
                     <div className="row">
                         <h2 className="center">Cadastro Cliente</h2>
-                        {cadastroCliente.map((cC:any, i:any)=> (
-                            <div key={i} className="input-field col s6">
-                                <input id="Nome" type="text" />
-                                <label htmlFor="Nome">{cC.nome}</label>
+                        
+                            <div className="input-field col s6">
+                                <input id="Nome" type="text" value={cadastroCliente.nome} />
+                                <label htmlFor="Nome">Nome</label>
                             </div>
-                        ))}
-                        {cadastroCliente.map((cC:any, i:any)=> (
-                            <div key={i} className="input-field col s6">
-                                <input id="Nome Social" type="text"  />
-                                <label htmlFor="Nome Social">{cC.nomeSocial}</label>
+                        
+                        
+                            <div className="input-field col s6">
+                                <input id="Nome Social" type="text" value={cadastroCliente.nomeSocial}  />
+                                <label htmlFor="Nome Social">Nome Social</label>
                             </div>
-                        ))}
+                        
                     </div>
 
                     <div className="row">
-                        {cadastroCliente.map((cC:any, i:any)=> (
-                            <div key={i} className="input-field col s6">
-                                <input id="RG" type="text" />
-                                <label htmlFor="RG">{cC.rg}</label>
+                        
+                            <div className="input-field col s6">
+                                <input id="RG" type="text" value={cadastroCliente.rg} />
+                                <label htmlFor="RG">RG</label>
                             </div>
-                        ))}
-                        {cadastroCliente.map((cC:any, i:any)=> (
-                            <div key={i} className="input-field col s6">
-                                <input id="CPF" type="text"  />
-                                <label htmlFor="CPF">{cC.cpf}</label>
+                        
+                        
+                            <div className="input-field col s6">
+                                <input id="CPF" type="text" value={cadastroCliente.cpf}  />
+                                <label htmlFor="CPF">CPF</label>
                             </div>
-                        ))}
+                        
                     </div>
                     <div className="row">
-                        {cadastroCliente.map((cC:any, i:any)=> (
-                            <div key={i} className="input-field col s6">
-                                <input id="telefone" type="text"  />
-                                <label htmlFor="telefone">{cC.telefone}</label>
+                        
+                            <div className="input-field col s6">
+                                <input id="telefone" type="text" value={cadastroCliente.telefone}  />
+                                <label htmlFor="telefone">Telefone</label>
                             </div>
-                        ))}
-                        {cadastroCliente.map((cC:any, i:any)=> (
-                            <div key={i} className="input-field col s6">
-                                <input id="email" type="text"  />
-                                <label htmlFor="email">{cC.email}</label>
+                        
+                        
+                            <div className="input-field col s6">
+                                <input id="email" type="text" value={cadastroCliente.email}  />
+                                <label htmlFor="email">E-mail</label>
                             </div>
-                        ))}
+                        
                     
                     </div>
                 <div className="row">
@@ -86,48 +90,48 @@ const FormularioCadastroCliente: React.FC<iprops> = (props)=> {
                     <form className="col s12 box1">
                         <div className="row">
                             <h2 className="center">Cadastro Produto</h2>
-                            {cadastroProduto.map((cp:any, i:any)=> (
-                                <div key={i} className="input-field col s6">
-                                <input id="Produto" type="text" />
-                                <label htmlFor="Produto">{cp.nome}</label>
+                            
+                                <div className="input-field col s6">
+                                <input id="Produto" type="text" value={cadastroProduto.nome} />
+                                <label htmlFor="Produto">Nome do Produto</label>
                             </div>
-                            ))}
-                            {cadastroProduto.map((cp:any, i:any)=> (
-                                <div key={i} className="input-field col s6">
-                                <input id="Preço" type="text"/>
-                                <label htmlFor="Preço">{cp.preco}</label>
+                            
+                            
+                                <div className="input-field col s6">
+                                <input id="Preço" type="text" value={cadastroProduto.preco} />
+                                <label htmlFor="Preço">Preço do Produto</label>
                             </div>
-                            ))}
+                            
                         </div>
 
                         <div className="row">
-                            {cadastroProduto.map((cp:any, i:any)=> (
-                                <div key={i} className="input-field col s6">
-                                <input id="Codigo do Produto" type="text"/>
-                                <label htmlFor="Codigo do Produto">{cp.codigo}</label>
+                            
+                                <div className="input-field col s6">
+                                <input id="Codigo do Produto" type="text" value={cadastroProduto.codigo} />
+                                <label htmlFor="Codigo do Produto">Código do Produto</label>
                             </div>
-                            ))}
-                            {cadastroProduto.map((cp:any, i:any)=> (
-                                <div key={i} className="input-field col s6">
-                                <input id="Descrição do produto" type="text" />
-                                <label htmlFor="Descrição do produto">{cp.descricao}</label>
+                            
+                            
+                                <div className="input-field col s6">
+                                <input id="Descrição do produto" type="text" value={cadastroProduto.descricao} />
+                                <label htmlFor="Descrição do produto">Descrição do Produto</label>
                             </div>
-                            ))}                            
+                                               
                         </div>
 
                         <div className="row">
-                            {cadastroProduto.map((cp:any, i:any)=> (
-                                <div key={i} className="input-field col s6">
-                                <input id="categoria"  type="text" />
-                                <label htmlFor="categoria">{cp.categoria}</label>
+                            
+                                <div className="input-field col s6">
+                                <input id="categoria"  type="text" value={cadastroProduto.categoria} />
+                                <label htmlFor="categoria">Categoria</label>
                             </div>
-                            ))}
-                            {cadastroProduto.map((cp:any, i:any)=> (
-                                <div key={i} className="input-field col s6">
-                                <input id="Quantidade" type="text" />
-                                <label htmlFor="Quantidade">{cp.quantidade}</label>
+                            
+                            
+                                <div className="input-field col s6">
+                                <input id="Quantidade" type="text" value={cadastroProduto.quantidade} />
+                                <label htmlFor="Quantidade">Quantidade</label>
                             </div>
-                            ))}
+                            
                             
                         </div>
                         <div className="row">
@@ -145,27 +149,27 @@ const FormularioCadastroCliente: React.FC<iprops> = (props)=> {
                         
                         <div className="row">
                             <h2 className="center">Cadastro Serviço</h2>
-                            {cadastroServico.map((cs:any, i:any)=> (
-                                <div key={i} className="input-field col s6">
-                                <input id="nome Servico"  type="text" />
-                                <label htmlFor="nome Servico">{cs.nome}</label>
+                            
+                                <div className="input-field col s6">
+                                <input id="nome Servico"  type="text" value={cadastroServico.nome} />
+                                <label htmlFor="nome Servico">Nome Serviço</label>
                             </div>
-                            ))}
-                            {cadastroServico.map((cs:any, i:any)=> (
-                            <div key={i} className="input-field col s6">
-                                <input id="preço"  type="text"  />
-                                <label htmlFor="preço">{cs.preco}</label>
+                            
+                          
+                            <div className="input-field col s6">
+                                <input id="preço"  type="text" value={cadastroServico.preco}  />
+                                <label htmlFor="preço">Preço</label>
                             </div>
-                            ))}                            
+                                                   
                         </div>
 
                         <div className="row">
-                            {cadastroServico.map((cs:any, i:any)=> (
-                            <div key={i} className="input-field col s6">
-                                <input id="Descricao" type="text"  />
-                                <label htmlFor="Descricao">{cs.descricao}</label>
+                           
+                            <div className="input-field col s6">
+                                <input id="Descricao" type="text" value={cadastroServico.descricao}  />
+                                <label htmlFor="Descricao">Descrição</label>
                             </div>
-                        ))}
+                       
                             
 
                         </div>

@@ -1,15 +1,21 @@
-import { Component } from "react";
+import React, { Component } from "react";
+import M from "materialize-css"
 
 
-type props = {
+type iprops = {
     tema: string
 }
 
 
-export default class EditServico extends Component<props> {
+const EditServico: React.FC<iprops> = (props) => {
+    const editarServico =
+    {nome:"", preco:"", descricao:""}
 
-    render() {
-        let estiloBotao = `btn waves-effect waves-light ${this.props.tema}`
+    
+        let estiloBotao = `btn waves-effect waves-light `
+        React.useEffect(()=> {
+            M.updateTextFields()
+        },[])
         return (
             <>
                 <div className="row">
@@ -17,17 +23,17 @@ export default class EditServico extends Component<props> {
                         <div className="row">
                             <h2 className="center">Editar Serviço</h2>
                             <div className="input-field col s6">
-                                <input id="Nome" type="text" className="validate" />
+                                <input id="Nome" type="text" className="validate" value={editarServico.nome} />
                                 <label htmlFor="Nome">Nome</label>
                             </div>
                             <div className="input-field col s6">
-                                <input id="Preço" type="text" className="validate" />
+                                <input id="Preço" type="text" className="validate" value={editarServico.preco} />
                                 <label htmlFor="Preço">Preço</label>
                             </div>
                         </div>
                         <div className="row">
                             <div className="input-field col s6">
-                                <input id="Descrição" type="text" className="validate" />
+                                <input id="Descrição" type="text" className="validate" value={editarServico.descricao} />
                                 <label htmlFor="Descrição">Descrição</label>
                             </div>
 
@@ -44,5 +50,8 @@ export default class EditServico extends Component<props> {
             </>
 
         )
-    }
+
+    
 }
+
+export default EditServico

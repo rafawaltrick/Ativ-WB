@@ -1,15 +1,20 @@
-import { Component } from "react";
+import React, { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
+import M from "materialize-css"
 
-type props = {
+type iprops = {
     tema: string
 }
 
 
-export default class Consumos extends Component<props> {
-
-    render() {
-        let estiloBotao = `btn waves-effect waves-light ${this.props.tema}`
+const Consumos: React.FC<iprops> = (props)=> {
+    const consumoCliente =
+    {cpf:"56787763324", nomeServico:"Depilação", nomeProduto:"Gel Para Depilação"}
+    
+        let estiloBotao = `btn waves-effect waves-light `
+        React.useEffect(()=> {
+            M.updateTextFields()
+        },[])
         return (
             <>
                 <div className="row">
@@ -17,17 +22,17 @@ export default class Consumos extends Component<props> {
                         <div className="row">
                             <h2 className="center">Consumo Cliente</h2>
                             <div className="input-field col s12">
-                                <input id="CPF-Cliente" type="text" />
+                                <input id="CPF-Cliente" type="text" value={consumoCliente.cpf} />
                                 <label htmlFor="CPF-Cliente">CPF-Cliente</label>
                             </div>
                         </div>
                         <div className="row">
                             <div className="input-field col s6">
-                                <input id="Nome Servico" type="text" className="validate" />
+                                <input id="Nome Servico" type="text" className="validate" value={consumoCliente.nomeServico} />
                                 <label htmlFor="Nome Servico">Nome Servico</label>
                             </div>
                             <div className="input-field col s6">
-                                <input id="Nome Produto" type="text" className="validate" />
+                                <input id="Nome Produto" type="text" className="validate" value={consumoCliente.nomeProduto} />
                                 <label htmlFor="Nome Produto">Nome Produto</label>
                             </div>
                         </div>
@@ -44,5 +49,7 @@ export default class Consumos extends Component<props> {
             </>
 
         )
-    }
+   
 }
+
+export default Consumos
