@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 
 type iprops = {
@@ -9,10 +10,28 @@ type iprops = {
 
 
 const Produtos: React.FC<iprops> = (props) => {
-    const produtos = [
-        {id:"1", nome:"Shapoo", preco:"15", descricao:"Para os cabelos", categoria:"Higiene", quantidade:"5"}
-    ]
-    
+    const [listarProdutos,setListaProdutos] = useState([])
+
+    const buscaDados = ()=>{
+        axios.get('http://localhost:5000/produto/listarProdutos').then(res=>{
+        setListaProdutos(res.data)
+        })
+    }
+    React.useEffect( () =>{
+        buscaDados()
+    },[]
+    )
+
+    const destroydados = (id:number) =>{
+        
+        axios.delete(`http://localhost:5000/produto/deletarProduto/${id}`).then(res => {
+            M.toast({ html: "deletado com sucesso!", classes: "modal1 rounded", });
+            const produtos = listarProdutos.filter((p:{id:number})=>p.id!==id)
+            setListaProdutos(produtos)
+        })
+    }
+
+
 
         return (
             <>
@@ -33,7 +52,7 @@ const Produtos: React.FC<iprops> = (props) => {
                         </thead>
 
                         <tbody>
-                        {produtos.map((p:any, i:any)=> (
+                        {listarProdutos.map((p:any, i:any)=> (
                             <tr key={i}>
                             <td>{p.id}</td>
                             <td>{p.nome}</td>
@@ -42,12 +61,12 @@ const Produtos: React.FC<iprops> = (props) => {
                             <td>{p.categoria}</td>
                             <td>{p.quantidade}</td>
                             <td className="espaço">
-                                <Link to = "/editProduto">
+                                <Link to = {`/editProduto/${p.id}`  }>
                                     <i className="material-icons espaço1">edit</i>
                                 </Link>
-                                <Link to = "/">
-                                    <i className="material-icons espaço1 ">delete</i>
-                                </Link>
+                                <span  onClick={()=>destroydados(p.id)}>
+                                    <i className="material-icons espaço1 " >delete</i>
+                                </span>
                             </td>
                         </tr>
                         ))}

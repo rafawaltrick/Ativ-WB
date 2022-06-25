@@ -1,3 +1,4 @@
+import Cliente from "../models/cliente.js"
 import Consumo from "../models/consumo.js"
 import Produto from "../models/produto.js"
 import Servico from "../models/servico.js"
@@ -120,3 +121,98 @@ export const listagemConsumo = async (req,res) =>{
         res.status(500).json({message:error})
     }
 } 
+
+// Listagem dos 5 clientes que mais consumiram em valor, não em quantidade.
+export const listMostConsumByValue = async (req, res) => {
+    try{
+        const dados = await Cliente.findAll({
+            attributes:['id','nome','nomeSocial','cpf'],
+            include:{
+                model:Consumo,
+                attributes:['id','cli_id','prod_id','serv_id'],
+                include:[{
+                    model:Produto,
+                    attributes:['id', 'preco']
+                },{
+                    model:Servico,
+                    attributes:['id','precoServico']
+                }]
+            }
+        })
+
+        const clientes = dados.map(c=>{
+            let total = 0
+            console.log('aki esta erro',c)
+            c.dataValues.Consumos.forEach(p=>{
+                if(p.dataValues.serv_id) {
+                    total +=p.dataValues.servico.precoServico
+                }
+                if(p.dataValues.prod_id) {
+                    total +=p.dataValues.produto.preco
+                }
+            })
+            delete c.dataValues.consumo
+            return { ...c.dataValues, total}
+        }).sort((a,b)=>b.total-a.total).slice(0,5)
+
+        res.status(201).json(clientes)
+
+    }catch(error){
+        console.log(error);
+        res.status(500).json({ message:error })
+    }
+}
+
+// Listagem dos 10 clientes que mais consumiram produtos ou serviços, em quantidade, não em valor.
+export const listConsumByAmount = async (req,res) => {
+    try{
+        const dados = await Cliente.findAll({
+            attributes:['id','nome', 'cpf'],
+            include:{
+                model:Consumo,
+                attributes:['id','cli_id','prod_id','serv_id']
+            }
+        })
+
+        const clientes = dados.map(c=>{
+            let total = 0
+            c.dataValues.Consumos.forEach(p=>{
+                if(p.dataValues.serv_id) total++
+                if(p.dataValues.prod_id) total++
+            })
+            delete c.dataValues.Consumos
+            return { ...c.dataValues, total}
+        }).sort((a,b)=>b.total-a.total).slice(0,10)
+
+        res.status(201).json(clientes)
+
+    }catch(error){
+        res.status(500).json({ message:error })
+    }
+}
+
+// Listagem dos 10 clientes que menos consumiram produtos ou serviços.
+
+export const listLessConsumo = async (req, res) => {
+    try{
+        const dados = await Cliente.findAll({
+            attributes:['id','nome', 'cpf'],
+            include:{
+                model:Consumo,
+                attributes:['id','cli_id','prod_id','serv_id']
+            }
+        })
+        const clientes = dados.map(c=>{
+            let total = 0
+            c.dataValues.Consumos.forEach(p=>{
+                if(p.dataValues.serv_id) total++
+                if(p.dataValues.prod_id) total++
+            })
+            delete c.dataValues.Consumos
+            return { ...c.dataValues, total}
+        }).sort((a,b)=>a.total-b.total).slice(0,10)
+        res.status(201).json(clientes)
+    }catch(error){
+        res.status(500).json({ message:error })
+    }
+}

@@ -45,4 +45,5 @@ const Cliente = db.define('cliente',{
     }
 })
 
+
 export default Cliente

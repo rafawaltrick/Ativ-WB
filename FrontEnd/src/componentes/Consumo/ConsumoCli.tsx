@@ -11,10 +11,6 @@ type iprops = {
 
 const ConsumoCli: React.FC<iprops> = (props) => {
 
-
-    
-
-
     const consumoServico = [
         { nome: "", preco: "", descricao: "" }
     ]
