@@ -30,8 +30,8 @@ const Produto = db.define('produto',{
     }
 })
 
-Consumo.belongsTo(Produto,{foreignKey:'cli_id'});
-Produto.hasMany(Consumo,{foreignKey:'cli_id'});
+Consumo.belongsTo(Produto,{foreignKey:'prod_id'});
+Produto.hasMany(Consumo,{foreignKey:'prod_id'});
 
 
 export default Produto

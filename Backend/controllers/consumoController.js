@@ -216,3 +216,36 @@ export const listLessConsumo = async (req, res) => {
         res.status(500).json({ message:error })
     }
 }
+
+
+export const consumoCliente = async (req,res)=>{
+    try{
+        const dados = await Consumo.findAll({
+            attributes:["id","cli_id","prod_id","serv_id"],
+            include:[
+                {
+                    model:Produto,
+                    attributes:["nome","preco","descricao"
+                        
+                    ]
+                },{
+                    model:Servico,
+                    attributes:[
+                        "nomeServico","precoServico","descricaoServico"
+                    ]
+                },
+                {
+                    model:Cliente,
+                    where:{
+                        id:req.params.id,
+                    }, attributes:["id"]
+                }
+            ]
+        })
+        res.json(dados)
+
+    }catch(error){
+        console.log(error)
+        res.status(500).json({ message:error })
+    }
+}

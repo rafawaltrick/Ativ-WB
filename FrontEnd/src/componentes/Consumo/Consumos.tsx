@@ -26,6 +26,9 @@ const Consumos: React.FC<iprops> = (props) => {
     const [serv_id, setServ_id] = React.useState('')
 
 
+
+
+
     const enviadados = () => {
         const obj = {
             cli_id,
@@ -50,17 +53,17 @@ const Consumos: React.FC<iprops> = (props) => {
                         <div className="collapsible-body">
                                 <div className="row">
                                     <div className="input-field col s12">
-                                        <input id="CPF-Cliente" type="text" value={consumoCliente.cpf} />
-                                        <label htmlFor="CPF-Cliente">CPF-Cliente</label>
+                                        <input id="CPF-Cliente" type="text" value={cli_id} onChange={(e)=>setCli_id(e.target.value)} />
+                                        <label htmlFor="CPF-Cliente">ID-Cliente</label>
                                     </div>
                                 </div>
                                 <div className="row">
                                     <div className="input-field col s6">
-                                        <input id="Nome Servico" type="text" className="validate" value={serv_id} />
+                                        <input id="Nome Servico" type="text" className="validate" value={serv_id} onChange={(e)=>setServ_id(e.target.value)}/>
                                         <label htmlFor="Nome Servico">ID Servico</label>
                                     </div>
                                     <div className="input-field col s6">
-                                        <input id="Nome Produto" type="text" className="validate" value={prod_id} />
+                                        <input id="Nome Produto" type="text" className="validate" value={prod_id} onChange={(e)=>setProd_id(e.target.value)}/>
                                         <label htmlFor="Nome Produto">ID Produto</label>
                                     </div>
                                 </div>
@@ -71,7 +74,7 @@ const Consumos: React.FC<iprops> = (props) => {
 
                 <div className="row">
                     <div className="col s12">
-                        <button className={estiloBotao} type="submit" name="action">Enviar
+                        <button className={estiloBotao} type="button" onClick={enviadados} name="action">Enviar
                             <i className="material-icons right">send</i>
                         </button>
                     </div>

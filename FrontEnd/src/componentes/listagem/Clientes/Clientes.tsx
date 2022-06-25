@@ -58,10 +58,10 @@ const Clientes: React.FC<iprops> = (props)=> {
                                 <td>{c.rg}</td>
                                 <td>{c.telefones}</td>
                                 <td className="espaço">
-                                    <Link to = "/Consumo">
+                                    <Link to = {`/Consumo/${c.id}`  }>
                                         <i className="material-icons espaço1">local_grocery_store</i>
                                     </Link>
-                                    <Link to = {`/editCliente/${c.id}`  }>
+                                    <Link to = {`/editCliente/${c.id}`  }> 
                                         <i className="material-icons espaço1">edit</i>
                                     </Link>
 

@@ -22,8 +22,8 @@ const Servico = db.define('servico',{
     }
 })
 
-Consumo.belongsTo(Servico,{foreignKey:'cli_id'});
-Servico.hasMany(Consumo,{foreignKey:'cli_id'});
+Consumo.belongsTo(Servico,{foreignKey:'serv_id'});
+Servico.hasMany(Consumo,{foreignKey:'serv_id'});
 
 
 export default Servico 

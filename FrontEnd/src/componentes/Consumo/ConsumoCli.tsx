@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import M from "materialize-css"
+import axios from "axios";
 
 
 type iprops = {
@@ -14,23 +15,28 @@ type iprops = {
 
 
 const ConsumoCli: React.FC<iprops> = (props) => {
+    const [ consumoProduto,setConsumoProduto] = React.useState([])
+    const [consumoServico,setConsumoServico] = React.useState([])
 
-    const consumoServico = [
-        { nome: "", preco: "", descricao: "" }
-    ]
 
-    const consumoProduto = [
-        { nome: "", preco: "", descricao: "" }
-    ]
 
     React.useEffect(()=> {
         M.updateTextFields()
-
+        buscaDados()
         var elems = document.querySelectorAll('.collapsible');
         var instances = M.Collapsible.init(elems);
     },[])
 
-    
+    const params = useParams()
+    const buscaDados  = () =>{
+        const id = params.id
+        axios.get(`http://localhost:5000/consumo/listarClienteConsumo/${id}` ).then(res =>{
+        const produtos = res.data.map((item:any)=>item.produto).filter((p:any)=>p)
+        const servico = res.data.map((item:any)=>item.servico).filter((s:any)=>s)
+        setConsumoServico(servico)
+        setConsumoProduto(produtos)
+        })
+    }
 
 
 
@@ -61,9 +67,9 @@ const ConsumoCli: React.FC<iprops> = (props) => {
                                 <tbody>
                                     {consumoServico.map((cS: any, i: any) => (
                                         <tr key={i}>
-                                            <td>{cS.nome}</td>
-                                            <td>{cS.preco}</td>
-                                            <td>{cS.descricao}</td>
+                                            <td>{cS.nomeServico}</td>
+                                            <td>{cS.precoServico}</td>
+                                            <td>{cS.descricaoServico}</td>
                                             <td>
                                                 <Link to="/">
                                                     <i className="material-icons espaço1 ">delete</i>

@@ -39,7 +39,7 @@ export default class AppRoutes extends Component <{}, state> {
             <Route path="/editProduto/:id" element={<EditProduto tema="purple lighten-4"/>} />
             <Route path="/editServico/:id" element={<EditServico tema="purple lighten-4"/>} />
             <Route path="/Consumos" element={<Consumos tema="purple lighten-4"/>} />
-            <Route path="/Consumo" element={<Consumo tema="purple lighten-4"/>} />
+            <Route path="/Consumo/:id" element={<Consumo tema="purple lighten-4"/>} />
         </Routes> 
     );
     }
