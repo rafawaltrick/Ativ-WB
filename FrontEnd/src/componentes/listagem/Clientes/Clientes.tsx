@@ -23,6 +23,14 @@ const Clientes: React.FC<iprops> = (props)=> {
         buscaDados()
     },[])
 
+    const destroydados = (id:number) =>{
+        
+        axios.delete(`http://localhost:5000/cliente/deletarCliente/${id}`).then(res => {
+            M.toast({ html: "deletado com sucesso!", classes: "modal1 rounded", });
+            const clientes2 = clientes.filter((p:{id:number})=>p.id!==id)
+            setClientes(clientes2)
+        })
+    }
     
         return (
             <>
@@ -56,9 +64,11 @@ const Clientes: React.FC<iprops> = (props)=> {
                                     <Link to = {`/editCliente/${c.id}`  }>
                                         <i className="material-icons espaço1">edit</i>
                                     </Link>
-                                    <Link to = "/">
-                                    <i className="material-icons espaço1 ">delete</i>
-                                    </Link>
+
+                                    <span  onClick={()=>destroydados(c.id)}>
+                                    <i className="material-icons espaço1 " >delete</i>
+                                    </span>
+                                    
                                 </td>
                             </tr>
                             ))}
