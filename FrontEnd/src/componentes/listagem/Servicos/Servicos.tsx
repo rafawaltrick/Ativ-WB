@@ -19,6 +19,15 @@ const Servicos: React.FC<iprops> = (props) => {
     React.useEffect(()=>{
         buscaDados()
     },[])
+
+    const destroydados = (id:number) =>{
+        
+        axios.delete(`http://localhost:5000/servico/deletarServico/${id}`).then(res => {
+            M.toast({ html: "deletado com sucesso!", classes: "modal1 rounded", });
+            const servico = listarServicos.filter((p:{id:number})=>p.id!==id)
+            setServicos(servico)
+        })
+    }
     return (
 
         <div className="row">
@@ -44,9 +53,9 @@ const Servicos: React.FC<iprops> = (props) => {
                                 <Link to= {`/editServico/${s.id}`}>
                                     <i className="material-icons espaço1">edit</i>
                                 </Link>
-                                <Link to="/">
-                                    <i className="material-icons espaço1 ">delete</i>
-                                </Link>
+                                <span  onClick={()=>destroydados(s.id)}>
+                                    <i className="material-icons espaço1 " >delete</i>
+                                </span>
                             </td>
                         </tr>
                     ))}

@@ -40,10 +40,6 @@ const EditServico: React.FC<iprops> = (props) => {
         })
     }
 
-    
-
-
-
         let estiloBotao = `btn waves-effect waves-light `
         React.useEffect(()=> {
             buscaDados()
