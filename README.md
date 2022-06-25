@@ -14,11 +14,3 @@ A partir das informações supra-apresentadas você decidiu pegar mais um desafi
 |<strong>Rodrigo Ribeiro dos Santos</strong>|[Linkedin](https://www.linkedin.com/in/rodrigo-ribeiro-5008211b8/) | [Github](https://github.com/rodrigoribeiro027)|<img src = "imagens/rodrigo.jpg" width="60" height="60">|
 |<strong>Rafael Peressoni Waltrick</strong>|[Linkedin](https://www.linkedin.com/in/rafael-p-waltrick-7211b4221) | [Github](https://github.com/rafawaltrick)|<img src = "imagens/rafa.jpg" width="60" height="60">|
 
-<h2> ⛏️ Para executar a aplicação</h2>
-  
-  Para executar a aplicação, certifique-se de ter instalado o NodeJs em seu computador:
-- Faça o clone do repositório:
-
-```
-git clone https://github.com/rodrigoribeiro027/Ativ-WB
-```
