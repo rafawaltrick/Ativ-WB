@@ -13,4 +13,5 @@ router.delete('/deletarCliente/:id',removerCliente)
 router.put('/atualizarCliente/:id',atualizarCliente)
 router.get('/listagemGenero',listagemGenero)
 
+
 export default router

@@ -41,7 +41,7 @@ const Servicos: React.FC<iprops> = (props) => {
                             <td>{s.precoServico}</td>
                             <td>{s.descricaoServico}</td>
                             <td className="espaço">
-                                <Link to="/editServico">
+                                <Link to= {`/editServico/${s.id}`}>
                                     <i className="material-icons espaço1">edit</i>
                                 </Link>
                                 <Link to="/">

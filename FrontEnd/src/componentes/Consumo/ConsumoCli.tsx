@@ -9,6 +9,10 @@ type iprops = {
 }
 
 
+
+
+
+
 const ConsumoCli: React.FC<iprops> = (props) => {
 
     const consumoServico = [
@@ -25,6 +29,13 @@ const ConsumoCli: React.FC<iprops> = (props) => {
         var elems = document.querySelectorAll('.collapsible');
         var instances = M.Collapsible.init(elems);
     },[])
+
+    
+
+
+
+
+
 
     return (
         <>

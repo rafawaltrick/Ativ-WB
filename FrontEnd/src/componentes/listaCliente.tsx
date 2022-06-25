@@ -2,35 +2,16 @@
 import React, { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 import './cliente.css'
+import axios from "axios";
 
 type iprops = {
     tema: string
 }
 
 const ListaCliente: React.FC<iprops> = (props) => {
-    const masculino = [
-        {nome:"José", email:"jose.marcondes@gmail.com", telefone:"12-997765456"}
-    ]
-        
-    const feminino = [
-        {nome:"Maria", email:"maria.marcondes@gmail.com", telefone:"12-997765498"}
-    ]
 
-    const consumo = [
-        {nome:"Maria", quantidade:"15"}
-    ]
 
-    const maiorConsumo = [
-        {nome:"José", quantidade:"21"}
-    ]
-
-    const menorConsumo = [
-        {nome:"Maria", quantidade:"15"}
-    ]
-
-    const cliente5Mais = [
-        {id:"2", nome:"José", preco:"15"}
-    ]
+    
 
     const produtoMasculino = [
         {nome:"Shampoo"}
@@ -39,6 +20,37 @@ const ListaCliente: React.FC<iprops> = (props) => {
     const produtoFeminino = [
         {nome:"Hidratante"}
     ]
+    const[consumo,setConsumo] = React.useState([])
+    const[masculino, setMasculino] = React.useState([])
+    const[feminino, setFeminino] = React.useState([])
+    const[maiorConsumo,setMaiorConsumo] = React.useState([])
+    const[menorConsumo,setMenorConsumo] = React.useState([])
+    const[cliente5Mais,setCliente5Mais] = React.useState([])
+    const buscaDados = () =>{
+        axios.get('http://localhost:5000/cliente/listagemGenero').then(res=>{
+            setMasculino(res.data.masculino)
+            setFeminino(res.data.feminino)
+
+        })
+        axios.get('http://localhost:5000/consumo/listagemConsumoMquantidade').then(res=>{
+            setConsumo(res.data)
+
+        })
+        axios.get('http://localhost:5000/consumo/listagemConsumoMenosConsumo').then(res=>{
+            setMenorConsumo(res.data)
+        })
+        axios.get('http://localhost:5000/consumo/listagemConsumoValor').then(res=>{
+            setCliente5Mais(res.data)
+        })
+        axios.get('http://localhost:5000/consumo/listagemConsumo').then(res=>{
+            setMaiorConsumo(res.data)
+        })
+
+    }
+    React.useEffect(()=>{
+        buscaDados()
+    },[])
+
 
         return (
             <>
@@ -52,20 +64,17 @@ const ListaCliente: React.FC<iprops> = (props) => {
                             <thead>
                                 <tr>
                                     <th>Nome</th>
-                                    <th>E-mail</th>
-                                    <th>Telefone</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 {masculino.map((m:any, i:any)=>(
                                 <tr key={i}>
                                     <td>{m.nome}</td>
-                                    <td>{m.email}</td>
-                                    <td>{m.telefone}</td>
+                                    
                                 </tr>
                                 ))}
-                                
-                                
+                            
                             </tbody>
                         </table>
                     </div>
@@ -78,16 +87,14 @@ const ListaCliente: React.FC<iprops> = (props) => {
                             <thead>
                                 <tr>
                                     <th>Nome</th>
-                                    <th>E-mail</th>
-                                    <th>Telefone</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                             {feminino.map((f:any, i:any)=>(
                                 <tr key={i}>
                                     <td>{f.nome}</td>
-                                    <td>{f.email}</td>
-                                    <td>{f.telefone}</td>
+                                    
                                 </tr>
                                 ))}
                                 
@@ -112,7 +119,7 @@ const ListaCliente: React.FC<iprops> = (props) => {
                                     {consumo.map((c:any, i:any)=>(
                                         <tr key={i}>
                                             <td>{c.nome}</td>
-                                            <td>{c.quantidade}</td>
+                                            <td>{c.total}</td>
                                         </tr>
                                         ))}
                                         
@@ -134,8 +141,8 @@ const ListaCliente: React.FC<iprops> = (props) => {
                                 <tbody>
                                 {maiorConsumo.map((mC:any, i:any)=> (
                                     <tr key= {i}>
-                                    <td>{mC.nome}</td>
-                                    <td>{mC.quantidade}</td>
+                                    <td>{mC.nome || mC.nomeServico}</td>
+                                    <td>{mC.qtd}</td>
                                 </tr>
                                 ))}
                                     
@@ -158,7 +165,7 @@ const ListaCliente: React.FC<iprops> = (props) => {
                                 {menorConsumo.map((mc:any, i:any)=> (
                                     <tr key= {i}>
                                     <td>{mc.nome}</td>
-                                    <td>{mc.quantidade}</td>
+                                    <td>{mc.total}</td>
                                 </tr>
                                 ))}
                                     
@@ -186,7 +193,7 @@ const ListaCliente: React.FC<iprops> = (props) => {
                             <tr key={i}>
                                 <td>{c5.id}</td>
                                 <td>{c5.nome}</td>
-                                <td>{c5.preco}</td>
+                                <td>{c5.total}</td>
                             </tr>
                             ))}
                                 
